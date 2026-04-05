@@ -1,0 +1,97 @@
+SELECT alunos.nome, cursos.nome
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id;
+
+SELECT alunos.nome, cursos.nome
+FROM alunos
+LEFT JOIN cursos ON alunos.curso_id = cursos.id;
+
+SELECT cursos.nome, COUNT(alunos.id) AS total_alunos
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome;
+
+SELECT cursos.nome, COUNT(alunos.id) AS total
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome
+HAVING COUNT(alunos.id) > 1;
+
+SELECT alunos.nome
+FROM alunos
+LEFT JOIN cursos ON alunos.curso_id = cursos.id
+WHERE cursos.id IS NULL;
+
+SELECT cursos.nome, COUNT(alunos.id) AS total
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome;
+
+SELECT cursos.nome, AVG(alunos.idade) AS media_idade
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome;
+
+
+SELECT alunos.nome, cursos.nome
+FROM alunos
+LEFT JOIN cursos ON alunos.curso_id = cursos.id
+ORDER BY alunos.nome;
+
+SELECT curso_id, COUNT(*) AS total
+FROM alunos
+GROUP BY curso_id;
+
+SELECT cursos.nome, COUNT(alunos.id) AS total
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome
+HAVING COUNT(alunos.id) < 3;
+
+SELECT cursos.nome, MAX(alunos.idade) AS maior_idade
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome;
+
+SELECT cursos.nome, MIN(alunos.idade) AS menor_idade
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome;
+
+SELECT alunos.nome
+FROM alunos
+INNER JOIN cursos ON alunos.curso_id = cursos.id
+WHERE cursos.nome = 'TI';
+
+SELECT cursos.nome, COUNT(alunos.id) AS total
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome
+ORDER BY total DESC;
+
+SELECT cursos.nome, SUM(alunos.idade) AS soma_idades
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome;
+
+SELECT cursos.nome, AVG(alunos.idade) AS media
+FROM cursos
+LEFT JOIN alunos ON alunos.curso_id = cursos.id
+GROUP BY cursos.nome
+HAVING AVG(alunos.idade) > 20;
+
+SELECT alunos.nome, cursos.nome
+FROM alunos
+LEFT JOIN cursos ON alunos.curso_id = cursos.id;
+
+SELECT COUNT(*) AS total_cursos
+FROM cursos;
+
+SELECT a.nome AS aluno, c.nome AS curso
+FROM alunos a
+LEFT JOIN cursos c ON a.curso_id = c.id;
+
+SELECT c.nome, COUNT(a.id) AS total_alunos
+FROM cursos c
+LEFT JOIN alunos a ON a.curso_id = c.id
+GROUP BY c.nome;
